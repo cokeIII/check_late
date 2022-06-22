@@ -1,0 +1,20 @@
+.bg-ctc {
+    /* background-image: url("img/logo_ctc.png"); */
+    background-size: 22%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.m-top {
+    margin-top: 20%;
+}
+
+.bg-red {
+    background-color: rgb(168, 30, 30);
+    /* color: white !important; */
+}
+
+.line-center {
+    display: block;
+}

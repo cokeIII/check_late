@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">ระบบบันทึกข้อมูลนักเรียน/นักศึกษา มาสาย</a>
+  <a class="navbar-brand ml-4" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ระบบบันทึกข้อมูลนักเรียน/นักศึกษา มาสาย</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,17 +10,16 @@
         <a class="nav-link" href="index.php">หน้าแรก <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">รายงาน</a>
+        <a class="nav-link" href="report.php">รายงาน</a>
       </li>
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          Dropdown
+          รายงาน
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">รายวันและเวลา</a>
+          <a class="dropdown-item" href="#">ช่วงวันที่ (รายสัปดาห์)</a>
+          <a class="dropdown-item" href="#"></a>
         </div>
       </li> -->
     </ul>

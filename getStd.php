@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 require_once "connect.php";
 $student_id = $_POST["student_id"];
 $sql = "select * from student s 

@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 require_once "connect.php";
 $student_id = $_POST["student_id"];
 $sql = "select time_stamp from late where student_id = '$student_id'";

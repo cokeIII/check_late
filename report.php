@@ -92,7 +92,7 @@
                     </div>
                 </form>
                 <hr>
-                <table class="table" id="reportData">
+                <table class="table" id="reportData" width="100%">
                     <thead>
                         <tr>
                             <td>ลำดับ</td>
@@ -164,7 +164,9 @@ function countLate($sql, $std_id, $checkSql)
 ?>
 <script>
     $(document).ready(function() {
-        $('#reportData').DataTable();
+        $('#reportData').DataTable({
+            "scrollX": true
+        });
         let timeSelect = '<?php echo (!empty($_POST["time_report"]) ? $_POST["time_report"] : ""); ?>'
         $("#timeReport").val(timeSelect)
         $(document).on("click", ".detailData", function() {
@@ -172,7 +174,7 @@ function countLate($sql, $std_id, $checkSql)
                 type: "POST",
                 url: "getTime.php",
                 data: {
-                    student_id:$(this).attr("student_id")
+                    student_id: $(this).attr("student_id")
                 },
                 success: function(result) {
                     $(".modal-display").html(result)

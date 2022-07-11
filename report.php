@@ -22,8 +22,9 @@
     require_once "setHead.php";
     require_once "connect.php";
     $sql = "";
-    $checkSql = false;
+    $checkSql = true;
     if (!empty($_POST["date_report"]) && !empty($_POST["date_report2"]) && !empty($_POST["time_report"])) {
+        $checkSql = false;
         $timeArr = explode("-", $_POST["time_report"]);
         $time1 = $timeArr[0];
         $time2 = $timeArr[1];
@@ -31,10 +32,12 @@
         $day2 = $_POST["date_report2"] . " " . $time2;
         $sql = "select *,MAX(time_stamp) as MaxTime from late where time_stamp between '$day1' and '$day2' group by student_id";
     } else if (!empty($_POST["date_report"]) && !empty($_POST["date_report2"])) {
+        $checkSql = false;
         $day1 = $_POST["date_report"] . " 00:00:01";
         $day2 = $_POST["date_report2"] . " 23:59:59";
         $sql = "select *,MAX(time_stamp) as MaxTime from late where time_stamp between '$day1' and '$day2' group by student_id";
     } else if (!empty($_POST["date_report"]) && !empty($_POST["time_report"])) {
+        $checkSql = false;
         $timeArr = explode("-", $_POST["time_report"]);
         $time1 = $timeArr[0];
         $time2 = $timeArr[1];
@@ -42,15 +45,16 @@
         $day2 = $_POST["date_report"] . " " . $time2;
         $sql = "select *,MAX(time_stamp) as MaxTime from late where time_stamp between '$day1' and '$day2' group by student_id";
     } else if (!empty($_POST["date_report"])) {
+        $checkSql = false;
         $day1 =  $_POST["date_report"];
         $sql = "SELECT *,MAX(time_stamp) as MaxTime FROM late WHERE date(time_stamp) = '$day1' group by student_id";
     } else if (!empty($_POST["time_report"])) {
+        $checkSql = false;
         $timeArr = explode("-", $_POST["time_report"]);
         $time1 = $timeArr[0];
         $time2 = $timeArr[1];
         $sql = "SELECT *,MAX(time_stamp) as MaxTime FROM late WHERE time(time_stamp) >= '$time1' and time(time_stamp) <= '$time2' group by student_id";
     } else {
-        $checkSql = true;
         $sql = "select *,MAX(time_stamp) as MaxTime from late  group by student_id";
     }
     $res = mysqli_query($conn, $sql);
@@ -92,6 +96,11 @@
                     </div>
                 </form>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success float-end mb-3" id="reportExcel" checkSql="<?php echo $checkSql; ?>" sql="<?php echo $sql; ?>"><i class="fa-solid fa-file-excel"></i> Excel</button>
+                    </div>
+                </div>
                 <table class="table" id="reportData" width="100%">
                     <thead>
                         <tr>
@@ -167,6 +176,14 @@ function countLate($sql, $std_id, $checkSql)
         $('#reportData').DataTable({
             "scrollX": true
         });
+        $("#reportExcel").click(function() {
+            let sql = $(this).attr("sql")
+            let checkSql = $(this).attr("checkSql")
+            $.redirect("excelReport.php", {
+                sql: sql,
+                checkSql: checkSql,
+            }, "POST");
+        })
         let timeSelect = '<?php echo (!empty($_POST["time_report"]) ? $_POST["time_report"] : ""); ?>'
         $("#timeReport").val(timeSelect)
         $(document).on("click", ".detailData", function() {

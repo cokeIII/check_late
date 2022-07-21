@@ -101,8 +101,8 @@
                         <form action="excelReport.php" method="post">
                             <input type="hidden" name="checkSql" value="<?php echo $checkSql; ?>">
                             <input type="hidden" name="sql" value="<?php echo $sql; ?>">
+                            <button class="btn btn-success float-end mb-3" id="reportExcel" checkSql="<?php echo $checkSql; ?>" sql="<?php echo $sql; ?>"><i class="fa-solid fa-file-excel"></i> Excel</button>
                         </form>
-                        <button class="btn btn-success float-end mb-3" id="reportExcel" checkSql="<?php echo $checkSql; ?>" sql="<?php echo $sql; ?>"><i class="fa-solid fa-file-excel"></i> Excel</button>
                     </div>
                 </div>
                 <table class="table" id="reportData" width="100%">

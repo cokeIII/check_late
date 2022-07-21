@@ -98,6 +98,10 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
+                        <form action="excelReport.php" method="post">
+                            <input type="hidden" name="checkSql" value="<?php echo $checkSql; ?>">
+                            <input type="hidden" name="sql" value="<?php echo $sql; ?>">
+                        </form>
                         <button class="btn btn-success float-end mb-3" id="reportExcel" checkSql="<?php echo $checkSql; ?>" sql="<?php echo $sql; ?>"><i class="fa-solid fa-file-excel"></i> Excel</button>
                     </div>
                 </div>
@@ -179,10 +183,10 @@ function countLate($sql, $std_id, $checkSql)
         $("#reportExcel").click(function() {
             let sql = $(this).attr("sql")
             let checkSql = $(this).attr("checkSql")
-            $.redirect("excelReport.php", {
-                sql: sql,
-                checkSql: checkSql,
-            }, "POST");
+            // $.redirect("excelReport.php", {
+            //     sql: sql,
+            //     checkSql: checkSql,
+            // }, "POST");
         })
         let timeSelect = '<?php echo (!empty($_POST["time_report"]) ? $_POST["time_report"] : ""); ?>'
         $("#timeReport").val(timeSelect)
